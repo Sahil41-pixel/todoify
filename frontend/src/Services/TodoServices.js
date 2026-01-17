@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API="http://localhost:8080/api/v1/todo";
+const API=import.meta.env.VITE_BASEURL;
 
 const getAuthHeader = () => {
   const user = JSON.parse(localStorage.getItem("todoapp") || "{}");
@@ -18,22 +18,22 @@ const getAuthHeader = () => {
 
 //CREATE TODO
 const createTodo=(data)=>{
-    return axios.post(`${API}/create`,data, getAuthHeader());
+    return axios.post(`${API}/todo/create`,data, getAuthHeader());
 }
 
 //GET ALL TODO
 const getAllTodo=(id)=>{
-    return axios.post(`${API}/getAll/${id}`, {}, getAuthHeader());
+    return axios.post(`${API}/todo/getAll/${id}`, {}, getAuthHeader());
 }
 
 //UPDATE TODO
 const updateTodo=(id,data)=>{
-    return axios.patch(`${API}/update/${id}`,data, getAuthHeader())
+    return axios.patch(`${API}/todo/update/${id}`,data, getAuthHeader())
 }
 
 //DELETE TODO
 const deleteTodo=(id)=>{
-     return axios.post(`${API}/delete/${id}`, {}, getAuthHeader());
+     return axios.post(`${API}/todo/delete/${id}`, {}, getAuthHeader());
 }
 
 const TodoServices={createTodo,getAllTodo,updateTodo,deleteTodo,};

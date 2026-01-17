@@ -16,16 +16,14 @@ const Navbar = () => {
     navigate("/login");
   };
 
-  
   // Get username
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("todoapp"));
     if (userData && userData.user && userData.user.username) {
       setUserName(userData.user.username);
     }
-    
   }, []);
-  
+
   return (
     <nav className="fixed top-0 w-full z-50 bg-gradient-to-r from-indigo-600 to-blue-600 shadow-lg">
       <div className="max-w-7xl mx-auto px-4">
